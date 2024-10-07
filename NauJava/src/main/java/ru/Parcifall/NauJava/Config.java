@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Configuration
 public class Config {
     @Bean
     @Scope(value = BeanDefinition.SCOPE_SINGLETON)
-    public ArrayList<Task> taskContainer() {
-        return new ArrayList<>();
+    public HashMap<Long, Task> taskContainer() {
+        return new HashMap<>();
     }
 }

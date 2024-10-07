@@ -1,9 +1,10 @@
 package ru.Parcifall.NauJava;
 
-import Entitys.Status;
+import org.springframework.context.annotation.Lazy;
+import ru.Parcifall.NauJava.Entitys.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import service.TaskService;
+import ru.Parcifall.NauJava.service.TaskService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

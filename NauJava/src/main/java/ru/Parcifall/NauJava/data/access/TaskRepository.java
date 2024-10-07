@@ -1,6 +1,6 @@
-package data.access;
+package ru.Parcifall.NauJava.data.access;
 
-import Entitys.Task;
+import ru.Parcifall.NauJava.Entitys.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -20,10 +20,12 @@ public class TaskRepository implements CrudRepository<Task, Long> {
     @Override
     public void create(Task task) {
         taskContainer.put(task.getId(), task);
+        System.out.println("Task id=" + task.getId() + " added");
     }
 
     @Override
     public Task read(Long id) {
+        System.out.println(taskContainer.get(id));
         return taskContainer.get(id);
     }
 
@@ -35,6 +37,7 @@ public class TaskRepository implements CrudRepository<Task, Long> {
         }
         delete(task.getId());
         create(task);
+        System.out.println("Task id=" + task.getId() + " updated");
     }
 
     @Override
@@ -44,6 +47,7 @@ public class TaskRepository implements CrudRepository<Task, Long> {
             return;
         }
         taskContainer.remove(id);
+        System.out.println("Task id=" + id + " deleted");
     }
 }
 

@@ -1,4 +1,4 @@
-package data.access;
+package ru.Parcifall.NauJava.data.access;
 
 public interface CrudRepository<T, ID> {
     void create(T entity);

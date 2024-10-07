@@ -1,12 +1,11 @@
-package service;
+package ru.Parcifall.NauJava.service;
 
-import Entitys.Status;
-import Entitys.Task;
+import ru.Parcifall.NauJava.Entitys.Status;
+import ru.Parcifall.NauJava.Entitys.Task;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 
-@Component
 public interface TaskService {
     void createTask(Long id, String name, String description, Calendar deadline, Status status);
 

@@ -1,6 +1,6 @@
 package ru.Parcifall.NauJava;
 
-import Entitys.Task;
+import ru.Parcifall.NauJava.Entitys.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +19,7 @@ public class Config {
         return new HashMap<>();
     }
 
+    /*
     @Autowired
     private CommandProcessor commandProcessor;
 
@@ -32,7 +33,7 @@ public class Config {
                     String input = scanner.nextLine();
                     if ("exit".equalsIgnoreCase(input.trim())) {
                         System.out.println("Выход из программы...");
-                        break;
+                        System.exit(1);
                     }
 
                     commandProcessor.processCommand(input);
@@ -40,4 +41,6 @@ public class Config {
             }
         };
     }
+
+     */
 }

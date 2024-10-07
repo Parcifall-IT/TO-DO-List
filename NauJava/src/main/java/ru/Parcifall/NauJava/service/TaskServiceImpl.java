@@ -1,8 +1,8 @@
-package service;
+package ru.Parcifall.NauJava.service;
 
-import Entitys.Status;
-import Entitys.Task;
-import data.access.TaskRepository;
+import ru.Parcifall.NauJava.Entitys.Status;
+import ru.Parcifall.NauJava.Entitys.Task;
+import ru.Parcifall.NauJava.data.access.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;

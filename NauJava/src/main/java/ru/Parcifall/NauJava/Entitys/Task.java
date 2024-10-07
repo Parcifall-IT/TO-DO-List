@@ -1,4 +1,4 @@
-package Entitys;
+package ru.Parcifall.NauJava.Entitys;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -65,5 +65,15 @@ public class Task {
     public void setStatus(Status status) {
         this.status = status;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", deadline=" + deadline.getTime() +
+                ", status=" + status +
+                '}';
+    }
+}

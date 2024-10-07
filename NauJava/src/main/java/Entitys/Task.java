@@ -67,4 +67,3 @@ public class Task {
     }
 }
 
-enum Status { FAILED, INITIALISED, FORGOTTEN, PROGRESS, FINISHED }

@@ -1,7 +1,6 @@
-package ru.Parcifall.NauJava.Entitys;
+package ru.Parcifall.NauJava.ent;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /*
 Управление задачами (To-Do List). Можно заводить задачи, менять статусы,

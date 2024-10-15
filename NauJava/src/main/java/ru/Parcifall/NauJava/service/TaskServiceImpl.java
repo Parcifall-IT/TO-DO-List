@@ -1,7 +1,7 @@
 package ru.Parcifall.NauJava.service;
 
-import ru.Parcifall.NauJava.Entitys.Status;
-import ru.Parcifall.NauJava.Entitys.Task;
+import ru.Parcifall.NauJava.ent.Status;
+import ru.Parcifall.NauJava.ent.Task;
 import ru.Parcifall.NauJava.data.access.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;

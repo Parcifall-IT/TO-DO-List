@@ -1,8 +1,7 @@
 package ru.Parcifall.NauJava.service;
 
-import ru.Parcifall.NauJava.Entitys.Status;
-import ru.Parcifall.NauJava.Entitys.Task;
-import org.springframework.stereotype.Component;
+import ru.Parcifall.NauJava.ent.Status;
+import ru.Parcifall.NauJava.ent.Task;
 
 import java.util.Calendar;
 

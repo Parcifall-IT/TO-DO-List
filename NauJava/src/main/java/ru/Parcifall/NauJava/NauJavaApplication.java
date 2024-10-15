@@ -18,6 +18,7 @@ public class NauJavaApplication {
 		SpringApplication.run(NauJavaApplication.class, args);
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner commandScanner() {
 		return args -> {
@@ -36,4 +37,6 @@ public class NauJavaApplication {
 			}
 		};
 	}
+
+	 */
 }

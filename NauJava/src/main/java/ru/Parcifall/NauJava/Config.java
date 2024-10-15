@@ -1,15 +1,12 @@
 package ru.Parcifall.NauJava;
 
-import ru.Parcifall.NauJava.Entitys.Task;
-import org.springframework.beans.factory.annotation.Autowired;
+import ru.Parcifall.NauJava.ent.Task;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 @Configuration
 public class Config {

@@ -1,7 +1,6 @@
 package ru.Parcifall.NauJava;
 
-import org.springframework.context.annotation.Lazy;
-import ru.Parcifall.NauJava.Entitys.Status;
+import ru.Parcifall.NauJava.ent.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.Parcifall.NauJava.service.TaskService;

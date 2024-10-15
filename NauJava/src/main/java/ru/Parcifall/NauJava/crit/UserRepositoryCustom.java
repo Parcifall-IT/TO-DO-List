@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UserRepositoryCustom {
     List<User> findBySubscription(String subscription);
+    void save(User user);
 }

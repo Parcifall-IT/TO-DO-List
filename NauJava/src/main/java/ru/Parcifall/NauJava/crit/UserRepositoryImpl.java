@@ -29,4 +29,8 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         criteriaQuery.select(userRoot).where(namePredicate);
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
+
+    public void save(User user) {
+        entityManager.persist(user);
+    }
 }

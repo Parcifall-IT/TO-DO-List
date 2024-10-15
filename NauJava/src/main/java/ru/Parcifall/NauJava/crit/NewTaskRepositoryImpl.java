@@ -33,4 +33,8 @@ public class NewTaskRepositoryImpl implements NewTaskRepositoryCustom {
 
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
+
+    public void save(NewTask task) {
+        entityManager.persist(task);
+    }
 }

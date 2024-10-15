@@ -14,13 +14,11 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final SubscriptionRepository subscriptionRepository;
     private final UserRepository userRepository;
     private final PlatformTransactionManager transactionManager;
 
     @Autowired
-    public UserServiceImpl(SubscriptionRepository subscriptionRepository, UserRepository userRepository, PlatformTransactionManager transactionManager) {
-        this.subscriptionRepository = subscriptionRepository;
+    public UserServiceImpl(UserRepository userRepository, PlatformTransactionManager transactionManager) {
         this.userRepository = userRepository;
         this.transactionManager = transactionManager;
     }
@@ -31,7 +29,7 @@ public class UserServiceImpl implements UserService {
         try {
             List<User> users = userRepository.findBySubscription(subscription);
             for (User user : users) {
-                userRepository.delete(user.getId());
+                userRepository.delete(user);
             }
             transactionManager.commit(status);
         }

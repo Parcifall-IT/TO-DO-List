@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface NewTaskRepositoryCustom {
     List<NewTask> findByTitleAndDescription(String title, String description);
+    void save(NewTask task);
 }

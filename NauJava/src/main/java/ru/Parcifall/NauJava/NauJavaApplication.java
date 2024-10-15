@@ -11,8 +11,11 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class NauJavaApplication {
+	/*
 	@Autowired
 	private CommandProcessor commandProcessor;
+
+	 */
 
 	public static void main(String[] args) {
 		SpringApplication.run(NauJavaApplication.class, args);

@@ -86,7 +86,7 @@ class NauJavaApplicationTests {
 		User user = new User(name, subscription);
 
 		subscriptionRepository.save(subscription);
-		userRepositoryCustom.save(user);
+		userRepository.save(user);
 
 		User foundUser = userRepositoryCustom.findBySubscription("admin").getFirst();
 		Assertions.assertNotNull(foundUser);
@@ -106,7 +106,7 @@ class NauJavaApplicationTests {
 
 		typeRepository.save(type);
 		statusRepository.save(status);
-		taskRepositoryCustom.save(task);
+		taskRepository.save(task);
 
 		NewTask foundTask = taskRepositoryCustom.findByTitleAndDescription(title, description).getFirst();
 

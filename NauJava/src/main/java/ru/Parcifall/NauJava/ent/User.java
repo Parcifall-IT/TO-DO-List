@@ -16,8 +16,8 @@ public class User {
     @ManyToOne
     private Subscription subscription;
 
-    @OneToOne
-    private NewTask task;
+    @OneToMany
+    private List<NewTask> tasks;
 
     public User() {
     }
@@ -51,12 +51,12 @@ public class User {
         this.subscription = subscription;
     }
 
-    public NewTask getTasks() {
-        return task;
+    public List<NewTask> getTasks() {
+        return tasks;
     }
 
-    public void setTasks(NewTask task) {
-        this.task = task;
+    public void setTasks(List<NewTask> task) {
+        this.tasks = task;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", subscription=" + subscription +
-                ", task=" + task +
+                ", task=" + tasks +
                 '}';
     }
 }

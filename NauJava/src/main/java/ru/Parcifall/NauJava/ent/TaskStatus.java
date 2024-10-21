@@ -56,9 +56,7 @@ public class TaskStatus {
     @Override
     public String toString() {
         return "TaskStatus{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                "title='" + title + '\'' +
                 ", is_failed=" + is_failed +
                 '}';
     }

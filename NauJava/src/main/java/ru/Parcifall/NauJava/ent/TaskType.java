@@ -55,10 +55,8 @@ public class TaskType {
 
     @Override
     public String toString() {
-        return "TaskType{" +
-                "id=" + id +
+        return "Type{" +
                 ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
                 ", importance=" + importance +
                 '}';
     }

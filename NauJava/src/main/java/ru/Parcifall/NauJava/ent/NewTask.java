@@ -83,13 +83,13 @@ public class NewTask {
 
     @Override
     public String toString() {
-        return "NewTask{" +
+        return "Task{" +
                 "id=" + id +
-                ", type=" + type +
+                ", type=" + type.toString() +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", status=" + status +
-                ", period=" + period +
+                ", status=" + status.toString() +
+                ", period=" + period.getTime() +
                 '}';
     }
 }

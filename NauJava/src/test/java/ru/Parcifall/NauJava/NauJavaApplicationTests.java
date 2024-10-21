@@ -15,7 +15,7 @@ import ru.Parcifall.NauJava.service.UserService;
 import java.util.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@Transactional
+//@Transactional
 @SpringBootTest
 class NauJavaApplicationTests {
 	private final UserRepository userRepository;

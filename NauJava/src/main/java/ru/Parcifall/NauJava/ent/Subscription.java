@@ -60,7 +60,7 @@ public class Subscription {
         return "Subscription{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", period=" + period +
+                ", period=" + period.getTime() +
                 ", cost=" + cost +
                 '}';
     }

@@ -1,10 +1,10 @@
 package ru.Parcifall.NauJava.data.access;
 
-import ru.Parcifall.NauJava.ent.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import ru.Parcifall.NauJava.ent.Task;
 
 import java.util.HashMap;
 

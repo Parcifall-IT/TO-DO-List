@@ -56,7 +56,7 @@ public class TaskType {
     @Override
     public String toString() {
         return "Type{" +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", importance=" + importance +
                 '}';
     }

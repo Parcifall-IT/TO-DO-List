@@ -1,28 +1,36 @@
 package ru.Parcifall.NauJava.ent;
 
+import jakarta.persistence.*;
+
 import java.util.Calendar;
 
-/*
-Управление задачами (To-Do List). Можно заводить задачи, менять статусы,
-устанавливать сроки выполнения, получать оповещения.
- */
+@Entity
+@Table(name = "tbl_tasks")
 public class Task {
+    @Id
+    @GeneratedValue
     private Long id;
 
-    private String name;
+    @ManyToOne
+    private TaskType type;
 
+    private String title;
     private String description;
 
-    private Calendar deadline;
+    @ManyToOne
+    private TaskStatus status;
 
-    private Status status;
+    private Calendar period;
 
-    public Task(Long id, String name, String description, Calendar deadline, Status status) {
-        this.id = id;
-        this.name = name;
+    public Task() {
+    }
+
+    public Task(TaskType type, String title, String description, TaskStatus status, Calendar period) {
+        this.type = type;
+        this.title = title;
         this.description = description;
-        this.deadline = deadline;
         this.status = status;
+        this.period = period;
     }
 
     public Long getId() {
@@ -33,12 +41,20 @@ public class Task {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public TaskType getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(TaskType type) {
+        this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -49,30 +65,31 @@ public class Task {
         this.description = description;
     }
 
-    public Calendar getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(Calendar deadline) {
-        this.deadline = deadline;
-    }
-
-    public Status getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
+    }
+
+    public Calendar getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Calendar period) {
+        this.period = period;
     }
 
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", type=" + type.toString() +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", deadline=" + deadline.getTime() +
-                ", status=" + status +
+                ", status=" + status.toString() +
+                ", period=" + period.getTime() +
                 '}';
     }
 }

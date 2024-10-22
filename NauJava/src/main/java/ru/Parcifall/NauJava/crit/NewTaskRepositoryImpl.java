@@ -6,8 +6,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
-import ru.Parcifall.NauJava.ent.NewTask;
-import ru.Parcifall.NauJava.ent.User;
+import ru.Parcifall.NauJava.ent.Task;
 
 import java.util.List;
 
@@ -20,11 +19,11 @@ public class NewTaskRepositoryImpl implements NewTaskRepositoryCustom {
     }
 
     @Override
-    public List<NewTask> findByTitleAndDescription(String title, String description) {
+    public List<Task> findByTitleAndDescription(String title, String description) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<NewTask> criteriaQuery = criteriaBuilder.createQuery(NewTask.class);
+        CriteriaQuery<Task> criteriaQuery = criteriaBuilder.createQuery(Task.class);
 
-        Root<NewTask> taskRoot = criteriaQuery.from(NewTask.class);
+        Root<Task> taskRoot = criteriaQuery.from(Task.class);
         Predicate predicate = criteriaBuilder.and(
                 criteriaBuilder.equal(taskRoot.get("title"), title),
                 criteriaBuilder.equal(taskRoot.get("description"), description));

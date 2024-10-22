@@ -1,10 +1,10 @@
 package ru.Parcifall.NauJava;
 
-import ru.Parcifall.NauJava.ent.Task;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import ru.Parcifall.NauJava.ent.Task;
 
 import java.util.HashMap;
 

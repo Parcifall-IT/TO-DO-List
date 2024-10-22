@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.Parcifall.NauJava.ent.NewTask;
+import ru.Parcifall.NauJava.ent.Task;
 import ru.Parcifall.NauJava.ent.User;
 import ru.Parcifall.NauJava.repo.NewTaskRepository;
 import ru.Parcifall.NauJava.repo.UserRepository;
@@ -27,7 +27,7 @@ public class RESTController {
     }
 
     @GetMapping("/findByTitleAndDescription")
-    public List<NewTask> findByTitleAndDescription(@RequestParam String title, @RequestParam String description) {
+    public List<Task> findByTitleAndDescription(@RequestParam String title, @RequestParam String description) {
         return taskRepository.findByTitleAndDescription(title, description);
     }
 }

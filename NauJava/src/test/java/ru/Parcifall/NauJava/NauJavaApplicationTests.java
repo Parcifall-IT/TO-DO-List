@@ -1,9 +1,7 @@
 package ru.Parcifall.NauJava;
 
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.Parcifall.NauJava.crit.NewTaskRepositoryCustom;
@@ -64,13 +62,13 @@ class NauJavaApplicationTests {
 		TaskType type = new TaskType();
 		TaskStatus status = new TaskStatus();
 
-		NewTask task = new NewTask(type, title, description, status, period);
+		Task task = new Task(type, title, description, status, period);
 
 		typeRepository.save(type);
 		statusRepository.save(status);
 		taskRepository.save(task);
 
-		NewTask foundTask = taskRepository.findByTitleAndDescription(title, description).getFirst();
+		Task foundTask = taskRepository.findByTitleAndDescription(title, description).getFirst();
 
 		Assertions.assertNotNull(foundTask);
 		Assertions.assertEquals(task.getId(), foundTask.getId());
@@ -102,13 +100,13 @@ class NauJavaApplicationTests {
 		TaskType type = new TaskType();
 		TaskStatus status = new TaskStatus();
 
-		NewTask task = new NewTask(type, title, description, status, period);
+		Task task = new Task(type, title, description, status, period);
 
 		typeRepository.save(type);
 		statusRepository.save(status);
 		taskRepository.save(task);
 
-		NewTask foundTask = taskRepositoryCustom.findByTitleAndDescription(title, description).getFirst();
+		Task foundTask = taskRepositoryCustom.findByTitleAndDescription(title, description).getFirst();
 
 		Assertions.assertNotNull(foundTask);
 		Assertions.assertEquals(task.getId(), foundTask.getId());

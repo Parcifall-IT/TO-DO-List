@@ -2,7 +2,6 @@ package ru.Parcifall.NauJava.ent;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +16,7 @@ public class User {
     private Subscription subscription;
 
     @OneToMany
-    private List<NewTask> tasks;
+    private List<Task> tasks;
 
     public User() {
     }
@@ -51,11 +50,11 @@ public class User {
         this.subscription = subscription;
     }
 
-    public List<NewTask> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<NewTask> task) {
+    public void setTasks(List<Task> task) {
         this.tasks = task;
     }
 

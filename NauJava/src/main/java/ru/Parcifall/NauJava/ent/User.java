@@ -11,6 +11,8 @@ public class User {
     @GeneratedValue
     private Long id;
     private String name;
+    private String password;
+    private Role role;
 
     @ManyToOne
     private Subscription subscription;
@@ -58,11 +60,28 @@ public class User {
         this.tasks = task;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", role=" + role +
                 ", subscription=" + subscription +
                 ", task=" + tasks +
                 '}';

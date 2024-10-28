@@ -15,4 +15,6 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
     @Query("FROM User WHERE subscription.title = :subscription")
     List<User> findBySubscription(String subscription);
+
+    List<User> findByName(String name);
 }

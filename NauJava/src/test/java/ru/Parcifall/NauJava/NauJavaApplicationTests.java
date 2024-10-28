@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 class NauJavaApplicationTests {
 	private final UserRepository userRepository;
-	private final NewTaskRepository taskRepository;
+	private final TaskRepository taskRepository;
 	private final NewTaskRepositoryCustom taskRepositoryCustom;
 	private final UserRepositoryCustom userRepositoryCustom;
 	private final UserService userService;
@@ -27,7 +27,7 @@ class NauJavaApplicationTests {
 
 
 	@Autowired
-    NauJavaApplicationTests(UserRepository userRepository, NewTaskRepository taskRepository, NewTaskRepositoryCustom taskRepositoryCustom, UserRepositoryCustom userRepositoryCustom, UserService userService, SubscriptionRepository subscriptionRepository, TaskTypeRepository typeRepository, TaskStatusRepository statusRepository) {
+    NauJavaApplicationTests(UserRepository userRepository, TaskRepository taskRepository, NewTaskRepositoryCustom taskRepositoryCustom, UserRepositoryCustom userRepositoryCustom, UserService userService, SubscriptionRepository subscriptionRepository, TaskTypeRepository typeRepository, TaskStatusRepository statusRepository) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
         this.taskRepositoryCustom = taskRepositoryCustom;

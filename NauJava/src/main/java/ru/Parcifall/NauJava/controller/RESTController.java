@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.Parcifall.NauJava.ent.Task;
 import ru.Parcifall.NauJava.ent.User;
-import ru.Parcifall.NauJava.repo.NewTaskRepository;
+import ru.Parcifall.NauJava.repo.TaskRepository;
 import ru.Parcifall.NauJava.repo.UserRepository;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class RESTController {
     private UserRepository userRepository;
 
     @Autowired
-    private NewTaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     @GetMapping("/findBySubscription")
     public List<User> findBySubscription(@RequestParam String subscription) {

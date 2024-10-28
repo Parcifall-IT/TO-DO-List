@@ -24,6 +24,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByName(String name) {
+        return userRepository.findByName(name).getFirst();
+    }
+
+    @Override
+    public void addUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public void deleteBySubscription(String subscription) {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         try {

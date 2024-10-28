@@ -17,8 +17,8 @@ public class UserControllerView {
 
     @GetMapping("/list")
     public String userListView(Model model) {
-        Iterable<User> products = userRepository.findAll();
-        model.addAttribute("users", products);
+        Iterable<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
         return "userList";
     }
 }

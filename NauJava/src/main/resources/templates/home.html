@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    header {
+        background: #35424a;
+        color: #ffffff;
+        padding: 10px 0;
+        text-align: center;
+    }
+    h1 {
+        margin: 0;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+    }
+    .content {
+        background: white;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+        text-align: center;
+        padding: 10px 0;
+        background-color: #35424a;
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+    .button {
+        display: inline-block;
+        font-size: 16px;
+        color: white;
+        background-color: #35424a;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 10px; /* Отступ между кнопками */
+    }
+    .button:hover {
+        background-color: #45a049; /* Цвет при наведении */
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Добро пожаловать на главную страницу!</h1>
+</header>
+
+<div class="container">
+  <div class="content">
+    <h2>О нас</h2>
+    <p>Это пример вашей домашней страницы, созданной с использованием Thymeleaf. Здесь вы можете разместить любую информацию о вашем приложении или компании.</p>
+
+    <h3>Что мы предлагаем?</h3>
+    <ul>
+      <li><i class="fas fa-check"></i> Высококачественные услуги</li>
+      <li><i class="fas fa-check"></i> Поддержка клиентов</li>
+      <li><i class="fas fa-check"></i> Инновационные решения</li>
+    </ul>
+
+    <!-- Кнопка для перехода на Swagger UI -->
+    <a href="/swagger-ui/index.html" class="button">Панель администратора</a>
+
+    <!-- Форма для выхода из системы -->
+    <form action="/login?logout=true" method="get" style="display:inline;">
+      <button type="submit" class="button">Выход</button>
+      <!-- Используйте кнопку вместо input для лучшей стилизации -->
+      <!-- Вы также можете добавить скрытое поле CSRF, если это необходимо -->
+      <!-- <input type="${_csrf.parameterName}" value="${_csrf.token}" type="hidden"/> -->
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Ваша компания. Все права защищены.</p>
+</footer>
+</body>
+</html>

@@ -3,6 +3,7 @@ package ru.Parcifall.NauJava.ent;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_users")
@@ -12,7 +13,7 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    private List<Role> roles;
+    private Set<Role> roles;
 
     @ManyToOne
     private Subscription subscription;
@@ -23,9 +24,8 @@ public class User {
     public User() {
     }
 
-    public User(String name, Subscription subscription) {
+    public User(String name) {
         this.name = name;
-        this.subscription = subscription;
     }
 
     public Long getId() {
@@ -68,11 +68,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 

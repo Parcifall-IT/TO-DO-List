@@ -5,11 +5,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import ru.Parcifall.NauJava.ent.Task;
-import ru.Parcifall.NauJava.ent.TaskStatus;
-import ru.Parcifall.NauJava.ent.TaskType;
 import ru.Parcifall.NauJava.repo.TaskRepository;
 
-import java.util.Calendar;
 import java.util.Optional;
 
 @Service

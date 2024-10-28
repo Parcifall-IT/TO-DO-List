@@ -5,7 +5,6 @@ import jakarta.persistence.criteria.*;
 import org.springframework.stereotype.Repository;
 import ru.Parcifall.NauJava.ent.Subscription;
 import ru.Parcifall.NauJava.ent.User;
-import ru.Parcifall.NauJava.repo.UserRepository;
 
 import java.util.List;
 

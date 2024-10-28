@@ -43,7 +43,8 @@ class NauJavaApplicationTests {
 		String name = UUID.randomUUID().toString();
 		Subscription subscription = new Subscription("admin", Calendar.getInstance(), 123.5);
 
-		User user = new User(name, subscription);
+		User user = new User(name);
+		user.setSubscription(subscription);
 
 		subscriptionRepository.save(subscription);
 		userRepository.save(user);
@@ -81,7 +82,8 @@ class NauJavaApplicationTests {
 		String name = UUID.randomUUID().toString();
 		Subscription subscription = new Subscription("admin", Calendar.getInstance(), 123.5);
 
-		User user = new User(name, subscription);
+		User user = new User(name);
+		user.setSubscription(subscription);
 
 		subscriptionRepository.save(subscription);
 		userRepository.save(user);
@@ -122,8 +124,10 @@ class NauJavaApplicationTests {
 		Subscription subscription = new Subscription(title, period, cost);
 		subscriptionRepository.save(subscription);
 
-		User user1 = new User("user1", subscription);
-		User user2 = new User("user2", subscription);
+		User user1 = new User("user1");
+		user1.setSubscription(subscription);
+		User user2 = new User("user2");
+		user2.setSubscription(subscription);
 
 		userRepository.save(user1);
 		userRepository.save(user2);
@@ -142,7 +146,8 @@ class NauJavaApplicationTests {
 		Subscription subscription = new Subscription(title, period, cost);
 		subscriptionRepository.save(subscription);
 
-		User user = new User("user", subscription);
+		User user = new User("user");
+		user.setSubscription(subscription);
 		userRepository.save(user);
 
 		assertThatThrownBy(() -> {

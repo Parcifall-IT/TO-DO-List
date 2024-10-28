@@ -12,7 +12,7 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    private Role role;
+    private List<Role> roles;
 
     @ManyToOne
     private Subscription subscription;
@@ -68,12 +68,12 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", role=" + role +
+                ", role=" + roles +
                 ", subscription=" + subscription +
                 ", task=" + tasks +
                 '}';

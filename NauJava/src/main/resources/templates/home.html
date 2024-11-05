@@ -55,6 +55,25 @@
     .button:hover {
         background-color: #45a049; /* Цвет при наведении */
     }
+    .input-container {
+        margin-top: 20px; /* Отступ сверху для формы */
+    }
+    input[type="text"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: calc(100% - 22px); /* Учитываем отступы */
+    }
+    input[type="button"] {
+        background-color: #35424a; /* Цвет кнопки */
+        color: white; /* Цвет текста кнопки */
+        border-radius: 5px; /* Закругленные углы */
+        border: none; /* Убираем рамку */
+        padding: 10px; /* Отступ внутри кнопки */
+    }
+    input[type="button"]:hover {
+        background-color: #45a049; /* Цвет при наведении */
+    }
   </style>
 </head>
 <body>
@@ -74,6 +93,17 @@
       <li><i class="fas fa-check"></i> Инновационные решения</li>
     </ul>
 
+    <!-- Форма для получения отчета по ID -->
+    <div class="input-container">
+      <input type="text" id="reportId" placeholder="Введите ID отчета" required />
+      <input type="button" value="Получить отчет" onclick="getReport()" />
+    </div>
+
+    <!-- Кнопка для создания отчета -->
+    <form action="/reports/create" method="get" style="display:inline;">
+      <button type="submit" class="button">Сделать отчет</button>
+    </form>
+
     <!-- Кнопка для перехода на Swagger UI -->
     <a href="/swagger-ui/index.html" class="button">Панель администратора</a>
 
@@ -90,5 +120,17 @@
 <footer>
   <p>&copy; 2024 Ваша компания. Все права защищены.</p>
 </footer>
+
+<script>
+  function getReport() {
+      const reportId = document.getElementById('reportId').value; // Получаем значение из поля ввода
+      if (reportId) {
+          window.location.href = '/reports/get/' + reportId; // Перенаправляем на нужный URL
+      } else {
+          alert("Пожалуйста, введите ID отчета."); // Сообщение об ошибке, если поле пустое
+      }
+  }
+</script>
+
 </body>
 </html>

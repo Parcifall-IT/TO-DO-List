@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отчет</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: calc(33.333% - 20px); /* Три карточки в ряд */
+        min-width: 250px; /* Минимальная ширина карточки */
+    }
+    .card h3 {
+        margin-top: 0;
+    }
+    .card i {
+        margin-right: 10px;
+        color: #35424a; /* Цвет иконок */
+    }
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #35424a;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    a:hover {
+        background-color: #45a049; /* Цвет при наведении */
+    }
+  </style>
+</head>
+<body>
+
+<h1>Информация об отчете</h1>
+
+<div class="container">
+  <div class="card">
+    <h3><i class="fas fa-info-circle"></i> Статус отчета</h3>
+    <p th:text="${status}">Статус отчета</p>
+  </div>
+  <div class="card">
+    <h3><i class="fas fa-users"></i> Пользователи</h3>
+    <p th:text="${userCount}">0</p>
+  </div>
+  <div class="card">
+    <h3><i class="fas fa-clock"></i> Время countUsers</h3>
+    <p th:text="${countUsersTime}">0 мс</p>
+  </div>
+  <div class="card">
+    <h3><i class="fas fa-tasks"></i> Задачи</h3>
+    <p th:text="${tasks}">[]</p>
+  </div>
+  <div class="card">
+    <h3><i class="fas fa-clock"></i> Время findTasks</h3>
+    <p th:text="${findTasksTime}">0 мс</p>
+  </div>
+  <div class="card">
+    <h3><i class="fas fa-stopwatch"></i> Общее время генерации отчета</h3>
+    <p th:text="${totalTime}">0 мс</p>
+  </div>
+</div>
+
+<a href="/home">Вернуться на главную страницу</a>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ public class Config {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((auth) -> auth
                 .requestMatchers("/registration", "/login").permitAll()
-                .requestMatchers("/home").authenticated()
+                .requestMatchers("/home", "/add-task").authenticated()
 //                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").hasRole("ADMIN")
                 .anyRequest().hasRole("ADMIN"))
                 .formLogin(form -> form

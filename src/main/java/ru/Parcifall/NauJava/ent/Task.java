@@ -2,6 +2,7 @@ package ru.Parcifall.NauJava.ent;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 @Entity
@@ -20,17 +21,14 @@ public class Task {
     @ManyToOne
     private TaskStatus status;
 
-    private Calendar period;
+    private LocalDate deadline;
 
     public Task() {
     }
 
-    public Task(TaskType type, String title, String description, TaskStatus status, Calendar period) {
-        this.type = type;
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
-        this.status = status;
-        this.period = period;
     }
 
     public Long getId() {
@@ -73,12 +71,12 @@ public class Task {
         this.status = status;
     }
 
-    public Calendar getPeriod() {
-        return period;
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
-    public void setPeriod(Calendar period) {
-        this.period = period;
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     @Override
@@ -89,7 +87,7 @@ public class Task {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status.toString() +
-                ", period=" + period.getTime() +
+                ", period=" + deadline.toString() +
                 '}';
     }
 }

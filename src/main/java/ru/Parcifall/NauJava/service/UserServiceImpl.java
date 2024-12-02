@@ -13,6 +13,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import ru.Parcifall.NauJava.ent.Role;
+import ru.Parcifall.NauJava.ent.Task;
 import ru.Parcifall.NauJava.ent.User;
 import ru.Parcifall.NauJava.repo.UserRepository;
 
@@ -64,6 +65,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             transactionManager.rollback(status);
             throw ex;
         }
+    }
+
+    @Override
+    public void addTaskToUser(User user, Task task) {
+        List<Task> tasks = user.getTasks();
+        tasks.add(task);
+        userRepository.save(user);
     }
 
     @Override

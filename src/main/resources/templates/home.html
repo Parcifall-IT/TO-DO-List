@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #6c63ff;
+      --secondary-color: #ffffff;
+      --background-light: #f4f4f4;
+      --background-dark: #333333;
+      --text-light: #ffffff;
+      --text-dark: #000000;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .profile-button {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .profile-button .profile-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .profile-button .profile-link i {
+      font-size: 24px;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .todo-list {
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .todo-list h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .todo-list .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .todo-list .search-bar input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .todo-list .search-bar button {
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .todo-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .todo-list ul li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .todo-list ul li:last-child {
+      border-bottom: none;
+    }
+
+    .todo-list ul li .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .todo-list ul li .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>TODO List</h1>
+  <div class="profile-button">
+    <div class="profile-link" onclick="toggleDropdown()">
+      <i class="fas fa-user-circle"></i> Профиль
+    </div>
+    <div class="dropdown" id="profileDropdown">
+      <a href="/edit-profile">Редактировать профиль</a>
+      <a href="/logout">Выйти</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="todo-list">
+    <h1>Список задач</h1>
+
+    <!-- Отображение сообщения, если список задач пуст -->
+    <div class="search-bar" th:if="${tasks.isEmpty()}">
+      <p>У вас пока нет задач.</p>
+    </div>
+
+    <!-- Список задач -->
+    <ul>
+      <li th:each="task : ${tasks}">
+        <span th:text="${task.title}"></span>
+        <div class="actions">
+          <!-- Кнопка редактирования -->
+          <button>
+            <i class="fas fa-edit"></i>
+          </button>
+          <!-- Кнопка удаления -->
+          <button>
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Кнопка добавления задачи -->
+    <a href="/add-task" class="add-task">Добавить задачу</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 TODO List. Все права защищены.</p>
+</footer>
+
+<!-- JavaScript для переключения выпадающего меню -->
+<script>
+  function toggleDropdown() {
+    const dropdown = document.getElementById('profileDropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Закрытие меню при клике вне его
+  window.onclick = function(event) {
+    if (!event.target.closest('.profile-button')) {
+      document.getElementById('profileDropdown').style.display = 'none';
+    }
+  }
+</script>
+</body>
+</html>

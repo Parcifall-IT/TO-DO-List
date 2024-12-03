@@ -17,6 +17,7 @@ import ru.Parcifall.NauJava.service.UserService;
 
 import java.lang.Exception;
 import java.util.Map;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -78,6 +79,12 @@ public class MainController {
         User user = userService.getUserByName(userDetails.getUsername());
         if (user != null) {
             model.addAttribute("user", user);
+
+            List<Task> tasks = user.getTasks();
+            int taskCounter = tasks.size();
+            int finishedTaskCounter = tasks.stream().filter(Task::isCompleted).toList().size();
+            model.addAttribute("taskCounter", taskCounter);
+            model.addAttribute("finishedTaskCounter", finishedTaskCounter);
         }
         return "profile";
     }

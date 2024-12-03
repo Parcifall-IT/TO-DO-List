@@ -73,6 +73,7 @@
         }
 
         .form-actions button {
+          margin-top: 10px;
           padding: 10px 20px;
           background-color: var(--primary-color);
           color: var(--text-light);
@@ -114,10 +115,9 @@
             <i class="fas fa-user"></i>
         </div>
         <h2 th:text="${user.name}">Имя пользователя</h2>
-        <!--
-        <p>Email: <span th:text="${user.email}">user@example.com</span></p>
-        <p>Дата регистрации: <span th:text="${user.registrationDate}">2024-12-01</span></p>
-        -->
+
+        <p>Количество заданий: <span th:text="${taskCounter}">123</span></p>
+        <p>Количество выполненых заданий: <span th:text="${finishedTaskCounter}">123</span></p>
 
         <div class="form-actions">
             <button type="button" onclick="window.history.back()">Назад</button>

@@ -23,6 +23,16 @@ public class Task {
 
     private LocalDate deadline;
 
+    private boolean completed = false;
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     public Task() {
     }
 

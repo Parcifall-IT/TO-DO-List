@@ -58,7 +58,7 @@
 
     .form-group input,
     .form-group textarea {
-      width: 100%;
+      width: 96%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -81,10 +81,20 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 14px;
+      margin-left: 10px;
     }
 
     .form-actions button:hover {
-      background-color: darken(var(--primary-color), 10%);
+      background-color: #5548c8;
+    }
+
+    .form-actions button:first-child {
+      background-color: #ccc;
+      color: var(--text-dark);
+    }
+
+    .form-actions button:first-child:hover {
+      background-color: #aaa;
     }
   </style>
 </head>
@@ -114,6 +124,7 @@
       </div>
 
       <div class="form-actions">
+        <button type="button" onclick="window.history.back()">Назад</button>
         <button type="submit">Сохранить</button>
       </div>
     </form>

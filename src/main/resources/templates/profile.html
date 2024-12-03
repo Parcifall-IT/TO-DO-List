@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+          --primary-color: #6c63ff;
+          --secondary-color: #ffffff;
+          --background-light: #f4f4f4;
+          --background-dark: #333333;
+          --text-light: #ffffff;
+          --text-dark: #000000;
+        }
+
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background-color: var(--background-light);
+          color: var(--text-dark);
+        }
+
+        header {
+          background-color: var(--primary-color);
+          color: var(--text-light);
+          text-align: center;
+          padding: 20px;
+          position: relative;
+        }
+
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        .profile-card {
+          background-color: var(--secondary-color);
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          text-align: center;
+        }
+
+        .profile-card .profile-avatar {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          margin: 0 auto 20px;
+          background-color: var(--background-light);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 40px;
+          color: var(--primary-color);
+        }
+
+        .profile-card h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        .profile-card p {
+          font-size: 16px;
+          margin: 5px 0;
+          color: #666;
+        }
+
+        .form-actions {
+          text-align: center;
+        }
+
+        .form-actions button {
+          padding: 10px 20px;
+          background-color: var(--primary-color);
+          color: var(--text-light);
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+        }
+
+        .form-actions button:hover {
+          background-color: #5548c8;
+        }
+
+        .form-actions button:first-child {
+          background-color: #ccc;
+          color: var(--text-dark);
+        }
+
+        .form-actions button:first-child:hover {
+          background-color: #aaa;
+        }
+
+        footer {
+          text-align: center;
+          padding: 20px;
+          background-color: var(--primary-color);
+          color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Профиль</h1>
+</header>
+
+<div class="container">
+    <div class="profile-card">
+        <div class="profile-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <h2 th:text="${user.name}">Имя пользователя</h2>
+        <!--
+        <p>Email: <span th:text="${user.email}">user@example.com</span></p>
+        <p>Дата регистрации: <span th:text="${user.registrationDate}">2024-12-01</span></p>
+        -->
+
+        <div class="form-actions">
+            <button type="button" onclick="window.history.back()">Назад</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 TODO List. Все права защищены.</p>
+</footer>
+</body>
+</html>

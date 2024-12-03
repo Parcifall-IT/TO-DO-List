@@ -72,4 +72,13 @@ public class MainController {
         }
         return "redirect:/home";
     }
+
+    @GetMapping("/edit-profile")
+    public String editProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.getUserByName(userDetails.getUsername());
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+        return "profile";
+    }
 }

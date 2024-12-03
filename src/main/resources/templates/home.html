@@ -150,6 +150,11 @@
       background-color: var(--primary-color);
       color: var(--text-light);
     }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
   </style>
 </head>
 <body>
@@ -177,14 +182,12 @@
 
     <!-- Список задач -->
     <ul>
-      <li th:each="task : ${tasks}">
+      <li th:each="task : ${tasks}" th:class="${task.completed} ? 'completed' : ''">
         <span th:text="${task.title}"></span>
         <div class="actions">
-          <!-- Кнопка редактирования -->
           <button>
             <i class="fas fa-edit"></i>
           </button>
-          <!-- Кнопка удаления -->
           <button>
             <i class="fas fa-trash"></i>
           </button>

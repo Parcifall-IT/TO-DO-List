@@ -78,7 +78,7 @@ public class ReportService {
             allCountTime[0] = System.currentTimeMillis() - startTimeAll;
             return userCount[0] + "\n" +
                     userCountTime[0] + "\n" +
-                    Arrays.toString(tasksList) + "\n" +
+                    tasksList[0].toString() + "\n" +
                     findTasksTime[0] + "\n" +
                     allCountTime[0];
         });

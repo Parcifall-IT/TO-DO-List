@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #6c63ff;
+      --secondary-color: #ffffff;
+      --background-light: #f4f4f4;
+      --background-dark: #333333;
+      --text-light: #ffffff;
+      --text-dark: #000000;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: var(--primary-color);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      margin-top: 10px;
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    button:hover {
+      background-color: #5548c8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 20px;
+    }
+
+    .exit-button {
+      padding-left: 300px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>Панель администратора</h1>
+</header>
+
+<div class="container">
+  <h2>Управление отчётами</h2>
+  <div class="form-group">
+    <label for="reportId">Введите ID отчёта:</label>
+    <input type="text" id="reportId" placeholder="Введите ID отчёта" />
+  </div>
+  <div class="buttons">
+    <!-- Кнопка получения отчёта -->
+    <button onclick="getReport()">Получить отчёт</button>
+
+    <!-- Кнопка создания отчёта -->
+    <form action="/reports/create" method="get">
+      <button type="submit">Создать новый отчёт</button>
+    </form>
+
+    <!-- Кнопка выхода -->
+    <form action="/login?logout=true" method="get" class="exit-button">
+      <button type="submit">Выход</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 TODO List. Все права защищены.</p>
+</footer>
+
+<script>
+  function getReport() {
+    const reportId = document.getElementById('reportId').value.trim();
+    if (reportId) {
+      window.location.href = `/reports/get/${reportId}`;
+    } else {
+      alert('Пожалуйста, введите ID отчёта.');
+    }
+  }
+</script>
+</body>
+</html>

@@ -93,10 +93,8 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", type=" + type.toString() +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", status=" + status.toString() +
                 ", period=" + deadline.toString() +
                 '}';
     }

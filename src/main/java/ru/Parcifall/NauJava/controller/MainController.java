@@ -52,6 +52,11 @@ public class MainController {
         return "home";
     }
 
+    @GetMapping("/admin-dashboard")
+    public String admin() {
+        return "admin-dashboard";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";

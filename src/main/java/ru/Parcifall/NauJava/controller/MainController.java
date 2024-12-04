@@ -6,13 +6,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import ru.Parcifall.NauJava.ent.Task;
 import ru.Parcifall.NauJava.ent.User;
 import ru.Parcifall.NauJava.repo.TaskRepository;
+import ru.Parcifall.NauJava.service.TaskService;
 import ru.Parcifall.NauJava.service.UserService;
 
 import java.lang.Exception;
@@ -23,6 +21,8 @@ import java.util.List;
 public class MainController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private TaskService taskService;
     @Autowired
     private TaskRepository taskRepository;
 
@@ -92,5 +92,32 @@ public class MainController {
             model.addAttribute("finishedTaskCounter", finishedTaskCounter);
         }
         return "profile";
+    }
+
+    @PostMapping("/update-task")
+    public String updateTask(@ModelAttribute Task task, @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.getUserByName(userDetails.getUsername());
+        if (user != null) {
+            Task existingTask = taskService.findById(task.getId()).orElse(null);
+            if (existingTask != null && user.getTasks().contains(existingTask)) {
+                existingTask.setTitle(task.getTitle());
+                existingTask.setDescription(task.getDescription());
+                existingTask.setDeadline(task.getDeadline());
+                taskService.updateTask(existingTask);
+            }
+        }
+        return "redirect:/home";
+    }
+
+    @GetMapping("/edit-task")
+    public ResponseEntity<Task> getTask(@RequestParam Long id, @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.getUserByName(userDetails.getUsername());
+        if (user != null) {
+            Task task = taskService.findById(id).orElse(null);
+            if (task != null && user.getTasks().contains(task)) {
+                return ResponseEntity.ok(task);
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 }

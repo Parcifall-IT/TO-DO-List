@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface TaskService {
     Optional<Task> findById(Long id);
+    void updateTask(Task task);
 }

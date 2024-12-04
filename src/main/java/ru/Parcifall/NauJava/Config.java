@@ -27,13 +27,15 @@ public class Config {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((auth) -> auth
                 .requestMatchers("/registration", "/login").permitAll()
-                .requestMatchers("/home", "/add-task", "/edit-profile", "/update-task", "/edit-task").authenticated()
-//                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").hasRole("ADMIN")
+                .requestMatchers("/home", "/add-task", "/edit-profile", "/update-task",
+                        "/edit-task", "/toggle-task-completion/**").authenticated()
                 .anyRequest().hasRole("ADMIN"))
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(customSuccessHandler())
                         .permitAll())
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/toggle-task-completion/**"))
                 .exceptionHandling(ex -> ex.accessDeniedPage("/home"));
         return httpSecurity.build();
     }

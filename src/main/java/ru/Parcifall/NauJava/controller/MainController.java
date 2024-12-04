@@ -120,4 +120,22 @@ public class MainController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PostMapping("/toggle-task-completion/{id}")
+    @ResponseBody
+    public ResponseEntity<String> toggleTaskCompletion(@PathVariable Long id,
+                                                       @RequestBody Map<String, Boolean> body,
+                                                       @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.getUserByName(userDetails.getUsername());
+        if (user != null) {
+            Task task = taskService.findById(id).orElse(null);
+            if (task != null && user.getTasks().contains(task)) {
+                boolean newStatus = body.getOrDefault("completed", false);
+                task.setCompleted(newStatus);
+                taskService.updateTask(task);
+                return ResponseEntity.ok("Статус задачи обновлен");
+            }
+        }
+        return ResponseEntity.status(403).body("Нет доступа к задаче");
+    }
 }

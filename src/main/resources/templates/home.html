@@ -191,6 +191,11 @@
       background-color: #4CAF50;
       color: white;
     }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
   </style>
 </head>
 <body>
@@ -212,12 +217,15 @@
     <h1>Список задач</h1>
 
     <ul>
-      <li th:each="task : ${tasks}">
+      <li th:each="task : ${tasks}" th:id="'task-' + ${task.id}" th:classappend="${task.completed} ? 'completed' : ''">
         <span th:text="${task.title}"></span>
         <div class="actions">
           <button th:onclick="'openEditModal(' + ${task.id} + ')'">
             <i class="fas fa-edit"></i>
           </button>
+          <input type="checkbox" th:checked="${task.completed}"
+                 th:onclick="'toggleTaskCompletion(' + ${task.id} + ', this.checked)'"
+                 th:onchange="'updateTaskClass(this, ' + ${task.id} + ')'">
         </div>
       </li>
     </ul>
@@ -291,6 +299,34 @@
     const modal = document.getElementById('editTaskModal');
     modal.style.display = 'none';
   }
+
+  function toggleTaskCompletion(taskId, isChecked) {
+    fetch(`/toggle-task-completion/${taskId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ completed: isChecked })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Статус задачи обновлен успешно');
+        } else {
+            console.error('Ошибка при обновлении задачи');
+        }
+    })
+    .catch(error => console.error('Ошибка:', error));
+  }
+
+  function updateTaskClass(checkbox, taskId) {
+    const taskElement = document.querySelector(`#task-${taskId}`);
+    if (checkbox.checked) {
+        taskElement.classList.add('completed');
+    } else {
+        taskElement.classList.remove('completed');
+    }
+  }
+
 </script>
 </body>
 </html>

@@ -14,8 +14,10 @@ import ru.Parcifall.NauJava.service.TaskService;
 import ru.Parcifall.NauJava.service.UserService;
 
 import java.lang.Exception;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -47,7 +49,10 @@ public class MainController {
     public String home(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.getUserByName(userDetails.getUsername());
         if (user != null) {
-            model.addAttribute("tasks", user.getTasks());
+            List<Task> tasks = user.getTasks().stream()
+                    .sorted(Comparator.comparing(Task::isCompleted))
+                    .toList();
+            model.addAttribute("tasks", tasks);
         }
         return "home";
     }

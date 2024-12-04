@@ -96,7 +96,7 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
     }
 
     .todo-list ul li {
@@ -196,6 +196,73 @@
       text-decoration: line-through;
       color: gray;
     }
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #007bff;
+    }
+    .actions button i {
+      font-size: 16px;
+    }
+    .tasks {
+      margin: 0 0 15px;
+      font-size: 24px;
+      color: #343a40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .filter-button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      margin-right: 5px;
+    }
+    .filter-button:hover {
+      background-color: #5548c8;
+    }
+    .filter-container {
+      position: relative;
+      display: inline-block; /* или flex, в зависимости от дизайна */
+    }
+    .filter-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; /* Под кнопкой фильтра */
+      left: 50%; /* Смещаем дропдаун к центру */
+      transform: translateX(-50%); /* Центрируем по горизонтали относительно кнопки */
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      width: 150px;
+    }
+    .filter-dropdown a {
+      display: block;
+      padding: 8px 12px;
+      color: #343a40;
+      font-size: 15px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .filter-dropdown a:hover {
+      background-color: #f8f9fa;
+    }
   </style>
 </head>
 <body>
@@ -212,13 +279,28 @@
   </div>
 </header>
 
+<!-- Кнопка фильтра -->
+
 <div class="container">
   <div class="todo-list">
-    <h1>Список задач</h1>
+    <h1 class="tasks">Список задач
+      <div class="filter-container">
+        <div class="filter-button" onclick="toggleFilterDropdown()">
+          <i class="fas fa-filter"></i> Фильтр
+        </div>
+        <div class="filter-dropdown" id="filterDropdown">
+          <a href="#" onclick="filterTasks('all')">Все задачи</a>
+          <a href="#" onclick="filterTasks('completed')">Выполненные</a>
+          <a href="#" onclick="filterTasks('incomplete')">В работе</a>
+        </div>
+      </div>
+    </h1>
+
+
 
     <ul>
       <li th:each="task : ${tasks}" th:id="'task-' + ${task.id}" th:classappend="${task.completed} ? 'completed' : ''">
-        <span th:text="${task.title}"></span>
+        <span th:text="${task.title} + ' до ' + ${task.deadline.toString()}"></span>
         <div class="actions">
           <button th:onclick="'openEditModal(' + ${task.id} + ')'">
             <i class="fas fa-edit"></i>
@@ -327,6 +409,36 @@
     }
   }
 
+  function toggleFilterDropdown() {
+      const dropdown = document.getElementById('filterDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function filterTasks(filter) {
+    const tasks = document.querySelectorAll('.todo-list ul li'); // Выбираем все задачи
+    tasks.forEach(task => {
+      switch (filter) {
+        case 'all':
+          task.style.display = 'flex'; // Показываем все задачи
+          break;
+        case 'completed':
+          if (task.classList.contains('completed')) {
+            task.style.display = 'flex'; // Показываем только выполненные
+          } else {
+            task.style.display = 'none'; // Скрываем невыполненные
+          }
+          break;
+        case 'incomplete':
+          if (!task.classList.contains('completed')) {
+            task.style.display = 'flex'; // Показываем только невыполненные
+          } else {
+            task.style.display = 'none'; // Скрываем выполненные
+          }
+          break;
+      }
+    });
+    document.getElementById('filterDropdown').style.display = 'none';
+  }
 </script>
 </body>
 </html>

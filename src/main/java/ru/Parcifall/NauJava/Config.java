@@ -1,5 +1,7 @@
 package ru.Parcifall.NauJava;
 
+import net.bull.javamelody.MonitoringFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,5 +40,13 @@ public class Config {
                         .ignoringRequestMatchers("/toggle-task-completion/**"))
                 .exceptionHandling(ex -> ex.accessDeniedPage("/home"));
         return httpSecurity.build();
+    }
+
+    @Bean
+    public FilterRegistrationBean<MonitoringFilter> monitoringFilter() {
+        FilterRegistrationBean<MonitoringFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new MonitoringFilter());
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
     }
 }

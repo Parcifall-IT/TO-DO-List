@@ -76,6 +76,11 @@ public class ReportService {
                 throw new IllegalStateException(ex);
             }
             allCountTime[0] = System.currentTimeMillis() - startTimeAll;
+            System.out.println(userCount[0] + "\n" +
+                    userCountTime[0] + "\n" +
+                    tasksList[0].toString() + "\n" +
+                    findTasksTime[0] + "\n" +
+                    allCountTime[0]);
             return userCount[0] + "\n" +
                     userCountTime[0] + "\n" +
                     tasksList[0].toString() + "\n" +

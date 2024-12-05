@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "tbl_reports")
@@ -12,6 +13,7 @@ public class Report {
     @GeneratedValue
     private long id;
     private ReportStatus status;
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     public Report() {

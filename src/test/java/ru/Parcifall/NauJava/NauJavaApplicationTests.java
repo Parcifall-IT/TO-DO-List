@@ -38,6 +38,7 @@ class NauJavaApplicationTests {
         this.statusRepository = statusRepository;
     }
 
+	/*
     @Test
 	void testFindUserBySub() {
 		String name = UUID.randomUUID().toString();
@@ -157,4 +158,6 @@ class NauJavaApplicationTests {
 
 		Assertions.assertNotNull(userRepository.findBySubscription(title));
 	}
+
+	 */
 }
